@@ -1,6 +1,7 @@
 
 - name: Setup frontend
   hosts: all
+  become: true
   tasks:
     - name: Install the latest version of Nginx
       ansible.builtin.yum:
