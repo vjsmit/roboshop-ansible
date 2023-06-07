@@ -18,9 +18,3 @@
 - name: Systemd setup
   ansible.builtin.import_tasks:
     file: systemd_setup.yml
-
-
-  #func_print_head "Download the dependencies"
-  #npm install &>>${log_file}
-  #stat_check $?
-  #service_start
