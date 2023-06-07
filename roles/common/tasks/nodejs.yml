@@ -10,11 +10,17 @@
   ansible.builtin.import_tasks:
     file: app_prereq.yml
 
+- name: Load nodejs dependency
+  ansible.builtin.shell: npm install
+  args:
+    chdir: /app
+
+- name: Systemd setup
+  ansible.builtin.import_tasks:
+  args:
+    chdir: /app
 
 
-
-
-  #app_prereq
   #func_print_head "Download the dependencies"
   #npm install &>>${log_file}
   #stat_check $?
