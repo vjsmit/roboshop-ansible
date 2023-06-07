@@ -17,8 +17,7 @@
 
 - name: Systemd setup
   ansible.builtin.import_tasks:
-  args:
-    chdir: /app
+    file: systemd_setup.yml
 
 
   #func_print_head "Download the dependencies"
