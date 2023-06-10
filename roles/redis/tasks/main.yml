@@ -23,7 +23,7 @@
 
 - rpm_key:
     state: present
-    key: https://rpms.remirepo.net/RPM-GPG-KEY-remi
+    key: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
 - name: Setup a repo file
   ansible.builtin.yum:
