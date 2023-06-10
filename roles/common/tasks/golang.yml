@@ -1,3 +1,16 @@
+# func_print_head "Install GoLang"
+#  yum install golang -y &>>${log_file}
+#  stat_check $?
+#
+#  app_prereq
+#
+#  func_print_head "Download the dependencies & build the software"
+#  go mod init ${component} &>>${log_file}
+#  go get &>>${log_file}
+#  go build &>>${log_file}
+#  stat_check $?
+#  service_start
+
 - name: Install GoLang
   ansible.builtin.yum:
     name: golang
@@ -8,7 +21,7 @@
     file: app_prereq.yml
 
 - name: Download dependencies
-  ansible.builtin.shell: go mod init ; go get ; go build
+  ansible.builtin.shell: go mod init {{ component }} ; go get ; go build
   args:
     chdir: /app
 
