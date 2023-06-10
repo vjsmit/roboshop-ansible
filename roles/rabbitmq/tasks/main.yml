@@ -1,15 +1,4 @@
-#func_print_head "Configure YUM Repos for erlang"
-#curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash &>>${log_file}
-#stat_check $?
-#
-#func_print_head "Configure YUM Repos for rabbitmq\e[0m"
-#curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash &>>${log_file}
-#stat_check $?
-#
-#func_print_head "Install RabbitMQ"
-#yum install rabbitmq-server -y &>>${log_file}
-#stat_check $?
-#
+
 #func_print_head "Start RabbitMQ Service"
 #systemctl enable rabbitmq-server &>>${log_file}
 #systemctl restart rabbitmq-server &>>${log_file}
@@ -21,5 +10,19 @@
 #stat_check $?
 
 - name: Configure yum repos for erlang
+  ansible.builtin.shell: https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
+
+- name: Configure YUM Repos for rabbitmq
+  ansible.builtin.shell: https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+
+- name: Install RabbitMQ
   ansible.builtin.yum:
-    name:
+    name: rabbitmq-server
+    state: installed
+
+- name: Start RabbitMQ Service
+  ansible.builtin.systemd:
+    state: restarted
+    enable: yes
+
+

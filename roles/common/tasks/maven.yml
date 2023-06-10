@@ -12,10 +12,11 @@
   args:
     chdir: /app
 
-- name: MySQL Schema Setup
+- name: MySQL schema setup
   ansible.builtin.import_tasks:
     file: mysql_schema_setup.yml
 
-- name: SystemD Setup
+- name: Systemd setup
   ansible.builtin.import_tasks:
     file: systemd_setup.yml
+
