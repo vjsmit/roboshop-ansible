@@ -26,3 +26,8 @@
   ansible.builtin.yum:
     name: yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
     state: installed
+
+- name: Enable redis 6.2
+  ansible.builtin.dnf:
+    name: redis
+    state: installed
