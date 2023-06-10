@@ -13,7 +13,7 @@
     chdir: /app
 
 - name: MySQL schema setup
-  ansible.builtin.import.tasks:
+  ansible.builtin.import_tasks:
     file: mysql_schema_setup.yml
 
   name: Systemd setup
