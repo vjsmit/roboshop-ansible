@@ -21,6 +21,9 @@
 #systemctl restart redis &>>${log_file}
 #stat_check $?
 
+- rpm_key:
+    state: present
+    key: https://rpms.remirepo.net/RPM-GPG-KEY-remi
 
 - name: Setup a repo file
   ansible.builtin.yum:
