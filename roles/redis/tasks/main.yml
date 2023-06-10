@@ -21,14 +21,12 @@
 #systemctl restart redis &>>${log_file}
 #stat_check $?
 
-- rpm_key:
-    state: present
-    key: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
 - name: Setup a repo file
   ansible.builtin.yum:
     name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
     state: installed
+    disable_gpg_check: True
 
 - name: Enable redis 6.2
   ansible.builtin.dnf:
