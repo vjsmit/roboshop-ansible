@@ -19,6 +19,11 @@
     dest: /usr/share/nginx/html
     remote_src: yes
 
+- name: Copy Nginx Configuration
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
 - name: Copy Nginx Reverse Proxy Configuration
   ansible.builtin.template:
     src: roboshop.conf
@@ -29,3 +34,8 @@
     name: nginx
     state: restarted
     enabled: true
+
+- name: Load filebeat
+  ansible.builtin.import_role:
+    name: elk
+    tasks_from: filebeat
