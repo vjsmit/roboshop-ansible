@@ -6,4 +6,4 @@
 - name: Load Prometheus-Node-Exporter
   ansible.builtin.import_role:
     name: prometheus
-    tasks_from: noe-exporter
+    tasks_from: node-exporter
