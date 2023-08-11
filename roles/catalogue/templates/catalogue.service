@@ -4,7 +4,7 @@
   [Service]
   User=roboshop
   Environment=DOCUMENTDB={{ lookup('aws_ssm', 'roboshop.{{env}}.catalogue.mongo', region='us-east-1') }}
-  Environment=MONGO_URL={{ lookup('aws_ssm', 'roboshop.{{env}}.catalogue.mongo_url', region='us-east-1') }}
+  Environment=MONGO_URL="{{ lookup('aws_ssm', 'roboshop.{{env}}.catalogue.mongo_url', region='us-east-1') }}"
   ExecStart=/bin/node /app/server.js
   SyslogIdentifier=catalogue
   
