@@ -10,10 +10,11 @@
   ansible.builtin.import_tasks:
     file: app_prereq.yml
 
-- name: Load nodejs dependency
-  ansible.builtin.shell: npm install
-  args:
-    chdir: /app
+# This step goes with CI
+#- name: Load nodejs dependency
+#  ansible.builtin.shell: npm install
+#  args:
+#    chdir: /app
 
 - name: Download DocumentDB pem file
   ansible.builtin.get_url:

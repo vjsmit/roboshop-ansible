@@ -7,10 +7,11 @@
   ansible.builtin.import_tasks:
     file: app_prereq.yml
 
-- name: Download the dependencies & build the application
-  ansible.builtin.shell: mvn clean package ; mv target/{{ component }}-1.0.jar {{ component }}.jar
-  args:
-    chdir: /app
+# This step goes with CI
+#- name: Download the dependencies & build the application
+#  ansible.builtin.shell: mvn clean package ; mv target/{{ component }}-1.0.jar {{ component }}.jar
+#  args:
+#    chdir: /app
 
 - name: MySQL schema setup
   ansible.builtin.import_tasks:
